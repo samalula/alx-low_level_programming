@@ -26,7 +26,7 @@ void print_diagonal(int n)
 	if (y == x)
 	_putchar('\\');
 	else if (y < x)
-	_putchar('_');
+	_putchar(' ');
 	}
 	_putchar('\n');
 	}
