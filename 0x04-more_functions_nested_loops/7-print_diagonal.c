@@ -9,25 +9,23 @@ include "main.h"
 void print_diagonal(int n)
 
 {
-
-
-	if (n <= 0)
-	{
-	_putchar('\n');
-	}
-	else
-	{
 	int x, y;
 
-	for (x = 1; x < n; x++)
+	if (n > 0)
 	{
-	for (y = 1; y < n; y++)
+	for (x = 0; x <= n; x++)
+	{
+	for (y = 0; y <= n; y++)
 	{
 	_putchar(' ');
 	}
 	_putchar('\\');
+	if (x == n - 1)
+	{
+	continue;
+	}
 	_putchar('\n');
 	}
 	}
-
+	_putchar('\n');
 }
