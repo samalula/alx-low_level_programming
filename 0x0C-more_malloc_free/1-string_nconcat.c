@@ -1,46 +1,52 @@
-/**
- * *malloc_checked - program startup
- * @s1: first char being evaluated
- * @s2: second char being evalutated
- * n: int being evaluated
-(*
- * Description: concatenates two strings)?
- * Return: return (0) is the required function signature
- */
-
 #include "main.h"
+#include <stdlib.h>
+
+/**
+  * string_nconcat - ...
+  * @s1: ...
+  * @s2: ...
+  * @n: ...
+  *
+  * Return: ...
+  */
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
-	char *concat;
-	unsigned int length = n;
-	unsigned int string;
+	unsigned int i = 0, j = 0, k = 0, l = 0;
+	char *str;
 
 	if (s1 == NULL)
-	{
 		s1 = "";
-	}
 	if (s2 == NULL)
-	{
 		s2 = "";
-	}
-	for (string = 0; s1[string]; string++)
+
+	while (s1[i])
+		i++;
+
+	while (s2[k])
+		k++;
+
+	if (n >= k)
+		l = i + k;
+	else
+		l = i + n;
+
+	str = malloc(sizeof(char) * l + 1);
+	if (str == NULL)
+		return (NULL);
+
+	k = 0;
+	while (j < l)
 	{
-		length++;
+		if (j <= i)
+			str[j] = s1[j];
+
+		if (j >= i)
+		{
+			str[j] = s2[k];
+			k++;
+		}
+		j++;
 	}
-	concat = malloc(sizeof(char) * (length + 1));
-	if (concat == NULL)
-	{
-		return NULL;
-	}
-	length = 0;
-	for (string = 0; s1[string]; string++)
-	{
-		concat[length++] = s1[string];
-	}
-	for (string = 0; s2[string] && string < n; string++)
-	{
-		concat[length++] = s2[string];
-	}
-	concat[length] = '\0';
-	return (concat);
+	str[j] = '\0';
+	return (str);
 }
